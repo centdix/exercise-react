@@ -42,7 +42,7 @@
   align-items: center;
 }
 
-.result  {
+.result {
   display: flex;
   width: 80%;
   height: 10%;
@@ -89,4 +89,19 @@
   justify-content: center;
   align-items: center;
   margin: 5px 5px 20px 5px;
+}
+
+.ranking {
+  background-color: lime;
+  margin-top: 20px;
+  width: 80%;
+}
+
+.ranking-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
