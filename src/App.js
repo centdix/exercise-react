@@ -2,6 +2,11 @@ import './App.css';
 import { TextField, Alert, Button, Card } from '@mui/material';
 import { useState } from 'react';
 
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = "https://whfqnaajcsqdqwsfwzfc.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoZnFuYWFqY3NxZHF3c2Z3emZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ5MjEwNzEsImV4cCI6MjAzMDQ5NzA3MX0.S4qsLhrJ1QireKTQx2vF1cKNtiVwU8dGgTf72CJAvWE";
+
 function App() {
 
   const [input, setInput] = useState('');
@@ -9,6 +14,7 @@ function App() {
   const [history, setHistory] = useState([]);
   const [result, setResult] = useState('');
 
+  const supabase = createClient(supabaseUrl, supabaseKey);
   console.log(randomNumber);
 
   return (
@@ -35,7 +41,10 @@ function App() {
             </div>
             <div className="buttons">
               <div className="button">
-                <Button variant="contained" onClick={() => {
+                <Button variant="contained" onClick={async () => {
+                  const { error } = await supabase
+                  .from('test')
+                  .insert({ test: 'fewfew' })
                   if (input === '' || isNaN(input)) {
                     setResult('Please enter a number')
                   } else {
